@@ -1,0 +1,27 @@
+# Build artifacts
+*.o
+*.obj
+*.so
+*.dll
+*.exe
+*.out
+
+# Build directories
+build/
+bin/
+
+# CMake files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Log Files
+*.log
+
+# Temporary files
+*~
