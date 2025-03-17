@@ -4,10 +4,19 @@
 #include "MusicService.h"
 #include <string>
 
-class SpotifyService : public MusicService {
+class SpotifyService {
 public:
-	bool authenticate(const std::string &token) override;
-	std::string search(const std::string &query) override;
+    // Constructor with initialization list
+    SpotifyService(const std::string& clientId, const std::string& clientSecret);
+
+    std::string authenticate();
+    std::string search(const std::string& query);
+    std::string getPlaylist(const std::string& playlistId);
+
+private:
+    std::string clientId;
+    std::string clientSecret;	
+    std::string accessToken;
 };
 
 #endif

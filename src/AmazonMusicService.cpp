@@ -1,9 +1,8 @@
 #include "AmazonMusicService.h"
 #include <iostream>
 
-bool AmazonMusicService::authenticate(const std::string &token) {
-    std::cout << "Authenticating with token: " << token << std::endl;
-    return true;
+std::string AmazonMusicService::authenticate() {
+    return "{}";
 }
 
 std::string AmazonMusicService::search(const std::string &query) {
