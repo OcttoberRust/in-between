@@ -32,6 +32,23 @@ std::string SpotifyService::authenticate() {
 }
 
 std::string SpotifyService::search(const std::string &query) {
-    std::cout << "Searching Spotify for: " << query << std::endl;
-    return "{\"result\": \"example\"}";
+    std::string token = authenticate();
+    
+    auto response = cpr::Get(
+        cpr::Url{"https://api.spotify.com/v1/search"},
+        cpr::Header{
+            {"Authorization", "Bearer " + token}
+        },
+        cpr::Parameters{
+            {"q", query},
+            {"type", "artist"},
+            {"limit", "5"}
+        }
+    );
+    
+    if (response.status_code == 200) {
+        return response.text;
+    } else {
+        throw std::runtime_error("Spotify search failed: " + response.text);
+    }
 }

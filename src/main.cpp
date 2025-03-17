@@ -12,8 +12,6 @@ std::map<std::string, std::string> loadEnvFile(const std::string& filename) {
    std::map<std::string, std::string> envVars;
    std::ifstream file(filename);
    std::string line;
-          std::cout<<"HELP PART 2\n";
-          std::cout<<"HELP PART 3\n";
           
    while (std::getline(file, line)) {
        size_t equalsPos = line.find('=');
@@ -48,19 +46,11 @@ int main() {
     try {
         SpotifyService spotify(clientId, clientSecret);
 
-        std::string token = spotify.authenticate();
-        std::cout << "Access Token: " << token << "\n";
-
-        //std::string playlistId = "37i9dQZF1DXcBWIGoYBM5M"; // Example playlist
-       //` std::string playlistData = spotify.getPlaylist(playlistId);
-       // std::cout << "Playlist Data: " << playlistData << "\n";
-
-        std::string searchQuery = "Radiohead";
-        std::string searchResults = spotify.search(searchQuery);
-        std::cout << "Search Results: " << searchResults << "\n";
-
+        std::string results = spotify.search("Radiohead");
+        std::cout << "Search Results:\n" << results << "\n";
     } catch (const std::exception& e) {
         std::cerr << "Error: " << e.what() << "\n";
+        return 1;
     }
     
     return 0;
