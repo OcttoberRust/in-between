@@ -1,11 +1,19 @@
+#include "SpotifyService.h"
+#include "AmazonMusicService.h"
 #include <iostream>
 
 int main() {
+    SpotifyService spotify;
+    AmazonMusicService amazonMusic;
 
-    //user selects music services to transfer playlists between
-    //authenticate
-    //retrieve user's playlist from source service
-    //query list of songs onto destination service and create playlist
+    if (spotify.authenticate("spotify_token")) {
+        std::cout << "Spotify search result: "
+        << spotify.search("artist:Radiohead") << "\n";
+    }
 
+    if (amazonMusic.authenticate("amazon_token")) {
+        std::cout << "Amazon Music search result: "
+        << amazonMusic.search("artist:Radiohead") << "\n";
+    }
     return 0;
 }
