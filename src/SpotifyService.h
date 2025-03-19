@@ -11,6 +11,7 @@ public:
 
     std::string authenticate();
     std::string search(const std::string& query);
+    std::string getCurrentUsersPlaylists();
     std::string getPlaylist(const std::string& playlistId);
 
 private:

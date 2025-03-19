@@ -46,8 +46,12 @@ int main() {
     try {
         SpotifyService spotify(clientId, clientSecret);
 
-        std::string results = spotify.search("Radiohead");
-        std::cout << "Search Results:\n" << results << "\n";
+        //std::string results = spotify.search("Radiohead");
+        //std::cout << "Search Results:\n" << results << "\n";
+        
+        std::string userPlaylists = spotify.getCurrentUsersPlaylists();
+        std::cout << "User playlists:\n" << userPlaylists << "\n";
+        
     } catch (const std::exception& e) {
         std::cerr << "Error: " << e.what() << "\n";
         return 1;

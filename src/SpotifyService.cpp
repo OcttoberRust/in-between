@@ -52,3 +52,21 @@ std::string SpotifyService::search(const std::string &query) {
         throw std::runtime_error("Spotify search failed: " + response.text);
     }
 }
+
+std::string SpotifyService::getCurrentUsersPlaylists() {
+    std::string token = authenticate();
+    
+    auto response = cpr::Get(
+        cpr::Url{"https://api.spotify.com/v1/me"},
+        cpr::Header{
+            {"Authorization", "Bearer " + token}
+        }
+    );
+    
+    if (response.status_code == 200) {
+       return response.text;
+    } else {
+        throw std::runtime_error("Spotify user playlist(s) retrieval failed: " + response.text);
+    }
+}
+
